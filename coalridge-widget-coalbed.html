@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Read the Coals — Coalridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Raleway:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --char:#222831;--char-2:#2B3139;--char-3:#39414b;
+    --ember:#E46A55;--ember-deep:#c2503d;--flame:#F2A28C;
+    --ash:#C4BEBC;--ash-dim:#8a9099;--ash-pale:#F4F3F1;
+    --line:rgba(196,190,188,.16);--line-strong:rgba(196,190,188,.32);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Open Sans",system-ui,sans-serif;color:var(--ash-pale);background:var(--char);-webkit-font-smoothing:antialiased;line-height:1.5;padding:14px}
+  .card{max-width:520px;margin:0 auto;background:var(--char-2);border:1px solid var(--line);border-radius:18px;padding:20px;position:relative}
+  .eyebrow{font-family:"Raleway",sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ember);display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .eyebrow::before{content:"";width:20px;height:1px;background:var(--ember)}
+  h2{font-family:"Open Sans";font-weight:800;letter-spacing:-.02em;font-size:1.45rem;line-height:1.1;margin-bottom:6px}
+  .lead{color:var(--ash);font-size:.92rem;margin-bottom:8px}
+  .lead b{color:var(--ash)}
+  .mute{position:absolute;top:16px;right:16px;width:34px;height:30px;border:1px solid var(--line);background:var(--char-3);border-radius:9px;color:var(--ash);cursor:pointer;font-size:.85rem}
+  .grillview{display:flex;flex-direction:column;align-items:center;margin-top:6px}
+  .kettle{width:100%;max-width:340px;aspect-ratio:1.55/1;border-radius:0 0 50% 50%/0 0 100% 100%;background:linear-gradient(180deg,#2B3139,#171b21);border:2px solid #000;box-shadow:inset 0 18px 30px rgba(0,0,0,.6),0 14px 30px rgba(0,0,0,.5);position:relative;overflow:hidden}
+  .coalbed{position:absolute;bottom:8%;left:8%;right:8%;height:46%;display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:1fr;gap:5px;align-content:end}
+  .coal{border-radius:5px 6px 5px 6px;background:#1a1f25;transition:background .4s,box-shadow .4s;align-self:stretch}
+  .glow{position:absolute;left:50%;bottom:14%;width:80%;height:44%;transform:translateX(-50%);border-radius:50%;filter:blur(22px);opacity:0;transition:opacity .5s;pointer-events:none;background:radial-gradient(circle,var(--ember) 0%,rgba(228,106,85,0) 70%)}
+  .flames{position:absolute;left:50%;bottom:30%;transform:translateX(-50%);display:flex;gap:10px;opacity:0;transition:opacity .35s;pointer-events:none}
+  .flame{width:15px;height:40px;background:linear-gradient(180deg,#ffffff,var(--flame) 40%,var(--ember) 80%);border-radius:50% 50% 45% 45%/65% 65% 35% 35%;transform-origin:bottom;animation:flick .6s ease-in-out infinite alternate}
+  .flame:nth-child(2){height:52px;animation-delay:.15s}
+  .flame:nth-child(3){height:36px;animation-delay:.3s}
+  @keyframes flick{from{transform:scaleY(.86) scaleX(1.05) rotate(-2deg)}to{transform:scaleY(1.08) scaleX(.94) rotate(3deg)}}
+  .readout{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:12px;flex-wrap:wrap}
+  .temp{font-family:"Open Sans";font-weight:700;font-size:1.8rem;color:var(--flame);line-height:1}
+  .temp small{font-size:.8rem;color:var(--ash-dim)}
+  .statechip{font-family:"Raleway",sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:30px;border:1px solid var(--line-strong);color:var(--ash);transition:.3s}
+  .statechip.ready{background:var(--ash);color:var(--char-2);border-color:var(--ash)}
+  .dialwrap{margin:16px auto 4px;max-width:380px}
+  .dialwrap label{display:flex;justify-content:space-between;font-family:"Raleway",sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ash-dim);margin-bottom:8px}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:10px;border-radius:8px;background:linear-gradient(90deg,#39414b,var(--ember-deep),var(--ember),var(--flame));outline:none;cursor:pointer}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,var(--ash) 55%,#9a9085);border:3px solid var(--char-2);box-shadow:0 4px 12px rgba(0,0,0,.5);cursor:grab}
+  input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,var(--ash) 55%);border:3px solid var(--char-2);cursor:grab}
+  .row{display:flex;gap:12px;align-items:center;margin-top:14px;flex-wrap:wrap}
+  .btn{font-family:"Open Sans";font-weight:700;font-size:.98rem;border:none;border-radius:12px;padding:13px 22px;cursor:pointer;background:linear-gradient(135deg,var(--ember),var(--ember-deep));color:#fff;box-shadow:0 10px 24px -8px rgba(228,106,85,.6);transition:transform .12s}
+  .btn:hover{transform:translateY(-2px)}
+  .small{font-size:.82rem;color:var(--ash-dim)}
+  .fb{border-radius:12px;padding:12px 14px;margin-top:14px;font-size:.9rem;display:none;border:1px solid transparent}
+  .fb.show{display:block}
+  .fb.ok{background:rgba(123,184,106,.12);border-color:rgba(123,184,106,.4);color:#cfe9c5}
+  .fb.no{background:rgba(228,106,85,.12);border-color:rgba(228,106,85,.4);color:#f4cdc4}
+  .fb b{color:#fff}
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.08s!important}}
+</style>
+</head>
+<body>
+  <div class="card">
+    <button class="mute" id="mute" title="Sound">🔊</button>
+    <div class="eyebrow">Read the Coals</div>
+    <h2>When are the coals ready?</h2>
+    <p class="lead">Flames mean fire, not cooking heat. Coals are ready when they glow under a coat of <b>grey ash</b>. Fan them up, then hit <b>Cook now</b> at the right moment.</p>
+    <div class="grillview">
+      <div class="kettle">
+        <div class="glow" id="glow"></div>
+        <div class="flames" id="flames"><span class="flame"></span><span class="flame"></span><span class="flame"></span></div>
+        <div class="coalbed" id="coalbed"></div>
+      </div>
+    </div>
+    <div class="readout">
+      <div class="temp"><span id="tempVal">75</span>°<small>F surface</small></div>
+      <span class="statechip" id="stateChip">Cold &amp; black</span>
+    </div>
+    <div class="dialwrap">
+      <label><span>Fan the coals</span><span id="heatPct">0%</span></label>
+      <input type="range" id="heat" min="0" max="100" value="0">
+    </div>
+    <div class="row">
+      <button class="btn" id="cookBtn">Cook now 🍳</button>
+      <span class="small" id="hint">Drag the slider to build heat.</span>
+    </div>
+    <div class="fb" id="fb"></div>
+  </div>
+<script>
+(()=>{
+  const $=s=>document.querySelector(s);
+  let ac=null,muted=false;
+  const audio=()=>{if(!ac){try{ac=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}return ac};
+  function blip(f=600,d=.08,t="sine",v=.1){if(muted)return;const c=audio();if(!c)return;const o=c.createOscillator(),g=c.createGain();o.type=t;o.frequency.value=f;o.connect(g);g.connect(c.destination);g.gain.setValueAtTime(v,c.currentTime);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+d);o.start();o.stop(c.currentTime+d)}
+  function chime(){if(muted)return;[660,880,1175].forEach((f,i)=>setTimeout(()=>blip(f,.18,"sine",.09),i*70))}
+  function buzz(){blip(160,.18,"square",.07)}
+  function sizzle(ms=700){if(muted)return;const c=audio();if(!c)return;const n=c.sampleRate*ms/1000,buf=c.createBuffer(1,n,c.sampleRate),d=buf.getChannelData(0);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,1.5);const src=c.createBufferSource();src.buffer=buf;const fl=c.createBiquadFilter();fl.type="bandpass";fl.frequency.value=3200;fl.Q.value=.7;const g=c.createGain();g.gain.value=.15;src.connect(fl);fl.connect(g);g.connect(c.destination);src.start()}
+  $("#mute").addEventListener("click",e=>{muted=!muted;e.currentTarget.textContent=muted?"🔇":"🔊";if(!muted)blip(800,.06)});
+
+  const bed=$("#coalbed"),heat=$("#heat"),tempVal=$("#tempVal"),chip=$("#stateChip"),
+        glow=$("#glow"),flames=$("#flames"),pct=$("#heatPct"),hint=$("#hint"),cookBtn=$("#cookBtn"),fb=$("#fb");
+  const coals=[];for(let i=0;i<28;i++){const c=document.createElement("div");c.className="coal";bed.appendChild(c);coals.push(c)}
+  function render(v){
+    pct.textContent=v+"%";
+    tempVal.textContent=Math.round(75+v*5.25);
+    coals.forEach((c,i)=>{
+      const p=Math.max(0,v-(i%5)*4);let bg="#1a1f25",sh="none";
+      if(p>78){bg="#C4BEBC";sh="0 0 6px rgba(228,106,85,.4)"}
+      else if(p>45){bg="#ef7a63";sh="0 0 10px rgba(228,106,85,.8)"}
+      else if(p>20){bg="#9e4334";sh="0 0 6px rgba(194,80,61,.5)"}
+      c.style.background=bg;c.style.boxShadow=sh;
+    });
+    let label,cls="",glowO=0,flameO=0;
+    if(v<20)label="Cold & black";
+    else if(v<46){label="Catching fire";flameO=.4}
+    else if(v<70){label="Flaming hot";flameO=1;glowO=.9}
+    else if(v<82){label="Glowing red";glowO=1}
+    else{label="Ashed over · READY";glowO=.7;cls="ready"}
+    chip.textContent=label;chip.className="statechip "+cls;
+    glow.style.opacity=glowO;flames.style.opacity=flameO;
+  }
+  render(0);
+  heat.addEventListener("input",e=>{render(+e.target.value);if(Math.random()<.25)blip(300+ +e.target.value*4,.03,"triangle",.04)});
+  cookBtn.addEventListener("click",()=>{
+    const v=+heat.value;
+    if(v>=82){sizzle(800);chime();fb.className="fb show ok";fb.innerHTML="<b>Perfect read.</b> The coals are coated in grey ash with a glow underneath — steady, even heat that won't scorch. That's the moment to cook.";hint.textContent="Coals ready — heat dialed in.";}
+    else if(v>=46){buzz();fb.className="fb show no";fb.innerHTML="<b>Too soon.</b> Open flames and bright-orange coals burn the outside before the inside cooks. Wait until the briquettes are dusted with <b>grey ash</b>.";hint.textContent="Fan them up a bit more and try again.";}
+    else{buzz();fb.className="fb show no";fb.innerHTML="<b>Not nearly hot enough.</b> These coals barely have heat. Fan them up until they glow and ash over.";hint.textContent="Keep building heat.";}
+  });
+})();
+</script>
+</body>
+</html>
