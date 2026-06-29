@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Mary K Boudreaux, EdD — Educator, Researcher &amp; Instructional Designer</title>
+<meta name="description" content="Portfolio of Dr. Mary K Boudreaux, EdD — Associate Professor of Educational Leadership and instructional designer. Interactive, equity-centered learning experiences.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,400italic&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine:#15332B;
+    --pine-deep:#0F2620;
+    --paper:#F5F0E6;
+    --paper-card:#FBF8F1;
+    --ink:#1E2622;
+    --muted:#5B665E;
+    --gold:#D49A33;
+    --gold-soft:#E7C887;
+    --line:#DED6C5;
+    --ivory:#F1EBDC;
+    --radius:14px;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(1100px 520px at 78% -10%, rgba(212,154,51,0.16), transparent 60%),
+      linear-gradient(180deg,var(--pine) 0%,var(--pine-deep) 100%);
+    color:var(--ivory);
+    padding:88px 0 76px;
+    position:relative;
+    overflow:hidden;
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    font-weight:600;
+    margin:0 0 22px;
+  }
+  .name{
+    font-family:"Fraunces",Georgia,serif;
+    font-optical-sizing:auto;
+    font-weight:500;
+    font-size:clamp(42px,7vw,76px);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:#FCFAF4;
+  }
+  .name .cred{
+    font-style:italic;
+    font-weight:400;
+    color:var(--gold-soft);
+  }
+  .rule{
+    width:70px;height:3px;background:var(--gold);
+    margin:26px 0 24px;border-radius:2px;
+  }
+  .lede{
+    font-size:clamp(18px,2.1vw,21px);
+    max-width:40ch;
+    color:#E9E2D2;
+    margin:0 0 30px;
+  }
+  .meta{
+    display:flex;flex-wrap:wrap;gap:10px 26px;
+    font-size:14.5px;color:#CBD3C8;
+    padding-top:8px;border-top:1px solid rgba(231,200,135,0.22);
+    max-width:46ch;
+  }
+  .meta b{color:#F1EBDC;font-weight:600;}
+
+  /* ---------- WORK ---------- */
+  .work{padding:74px 0 30px;}
+  .section-head{
+    display:flex;align-items:baseline;gap:16px;
+    margin:0 0 34px;
+  }
+  .section-head h2{
+    font-family:"Fraunces",Georgia,serif;
+    font-weight:500;font-size:clamp(26px,3.4vw,34px);
+    margin:0;color:var(--ink);letter-spacing:-0.01em;
+  }
+  .section-head .count{
+    font-size:13px;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--muted);font-weight:600;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+  }
+  .card{
+    display:flex;flex-direction:column;
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 26px 22px;
+    text-decoration:none;color:var(--ink);
+    position:relative;
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";position:absolute;left:0;top:0;height:100%;width:4px;
+    background:var(--gold);
+    transform:scaleY(0);transform-origin:top;
+    transition:transform .26s ease;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 34px -20px rgba(21,51,43,0.45);
+    border-color:var(--gold-soft);
+  }
+  .card:hover::before{transform:scaleY(1);}
+  .card:focus-visible{
+    outline:3px solid var(--pine);outline-offset:3px;
+  }
+  .kicker{
+    font-size:12px;letter-spacing:0.16em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin:0 0 12px;
+  }
+  .card h3{
+    font-family:"Fraunces",Georgia,serif;
+    font-weight:600;font-size:22px;line-height:1.2;
+    margin:0 0 12px;letter-spacing:-0.01em;
+  }
+  .card p{
+    font-size:15px;color:var(--muted);line-height:1.55;
+    margin:0 0 18px;
+  }
+  .tags{
+    display:flex;flex-wrap:wrap;gap:7px;margin:0 0 20px;
+  }
+  .tag{
+    font-size:12px;color:#3C4640;
+    background:var(--ivory);
+    border:1px solid var(--line);
+    padding:3px 10px;border-radius:20px;
+  }
+  .view{
+    margin-top:auto;
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:14px;font-weight:600;color:var(--pine);
+  }
+  .view .arrow{transition:transform .22s ease;}
+  .card:hover .view .arrow{transform:translateX(5px);}
+
+  /* ---------- VIDEO ---------- */
+  .video-section{margin-top:66px;}
+  .vgrid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:24px;
+  }
+  .vcard{display:flex;flex-direction:column;}
+  .vframe{
+    position:relative;width:100%;aspect-ratio:16/9;
+    border-radius:var(--radius);overflow:hidden;
+    border:1px solid var(--line);background:#0b0b0b;
+  }
+  .vframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .vcap{
+    font-family:"Fraunces",Georgia,serif;font-weight:600;
+    font-size:18px;margin:15px 0 5px;color:var(--ink);
+  }
+  .vsub{font-size:14px;color:var(--muted);margin:0;line-height:1.5;}
+  .vmeta{margin-top:15px;}
+  .vmeta .kicker{margin:0 0 8px;}
+  .vmeta .vcap{margin:0 0 5px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:46px 0 60px;margin-top:46px;
+    border-top:1px solid var(--line);
+  }
+  .foot-row{
+    display:flex;flex-wrap:wrap;justify-content:space-between;
+    align-items:center;gap:18px;
+  }
+  .links{display:flex;flex-wrap:wrap;gap:8px 22px;}
+  .links a{
+    font-size:14.5px;font-weight:500;text-decoration:none;color:var(--ink);
+    border-bottom:2px solid transparent;padding-bottom:2px;transition:border-color .2s ease;
+  }
+  .links a:hover,.links a:focus-visible{border-color:var(--gold);}
+  .copy{font-size:13px;color:var(--muted);}
+
+  @media (max-width:900px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:560px){
+    .hero{padding:64px 0 56px;}
+    .work{padding:54px 0 20px;}
+    .foot-row{flex-direction:column;align-items:flex-start;}
+    .section-head{flex-direction:column;gap:6px;}
+    .grid{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Educator · Researcher · Instructional Designer · Children&#8217;s Book Writer</p>
+      <h1 class="name">Dr. Mary K Boudreaux, <span class="cred">EdD</span></h1>
+      <div class="rule"></div>
+      <p class="lede">I build interactive experiences across all facets and fields of education, including culinary schools, higher education, and Pre-K12 education.</p>
+    </div>
+  </header>
+
+  <main class="work">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Selected interactive work</h2>
+        <span class="count">Built in HTML · CSS · JS</span>
+      </div>
+
+      <div class="grid">
+
+        <a class="card" href="https://drmarykat.github.io/edl783summer2026/" target="_blank" rel="noopener">
+          <p class="kicker">Course site</p>
+          <h3>EDL 783: Supervision &amp; Staff Development</h3>
+          <p>A six-module interactive course site with embedded video, infographics, self-check quizzes, matching activities, and case studies — designed for in-class use during each session block.</p>
+          <div class="tags">
+            <span class="tag">Multi-module site</span>
+            <span class="tag">Embedded video</span>
+            <span class="tag">Formative checks</span>
+          </div>
+          <span class="view">View live<span class="arrow">→</span></span>
+        </a>
+
+        <a class="card" href="https://drmarykat.github.io/Space-Place-Critical-Interviewing/" target="_blank" rel="noopener">
+          <p class="kicker">Course module</p>
+          <h3>EDL 599: Critical Phenomenology</h3>
+          <p>An interactive module on space, place, and critical interviewing — with writable in-page activities, comparison tables, structured interview protocols, downloadable templates, and built-in accessibility features.</p>
+          <div class="tags">
+            <span class="tag">Writable activities</span>
+            <span class="tag">Accessibility</span>
+            <span class="tag">Downloadable tools</span>
+          </div>
+          <span class="view">View live<span class="arrow">→</span></span>
+        </a>
+
+        <a class="card" href="https://drmarykat.github.io/ell-vocabulary-bridge/" target="_blank" rel="noopener">
+          <p class="kicker">PD course · data-driven</p>
+          <h3>ELL Vocabulary Bridge</h3>
+          <p>A data-driven K–5 professional development course for multilingual learners, featuring an interactive data-dashboard simulation, branching scenarios, an assessment design studio, and collaborative planning tools.</p>
+          <div class="tags">
+            <span class="tag">Data dashboard</span>
+            <span class="tag">Branching scenarios</span>
+            <span class="tag">Multilingual ed</span>
+          </div>
+          <span class="view">View live<span class="arrow">→</span></span>
+        </a>
+
+        <a class="card" href="https://drmarykat.github.io/yoga-for-preschool-kids-/" target="_blank" rel="noopener">
+          <p class="kicker">Pre-K · Movement</p>
+          <h3>Yoga for Preschool Kids</h3>
+          <p>An interactive movement series (Week 1: Animal Friends) led by twin guides Joy and Hope — six animal poses with video and audio narration, teacher tips, and a breathe-along bubble animation.</p>
+          <div class="tags">
+            <span class="tag">Audio narration</span>
+            <span class="tag">Animated guides</span>
+            <span class="tag">Early childhood</span>
+          </div>
+          <span class="view">View live<span class="arrow">→</span></span>
+        </a>
+
+      </div>
+
+      <div class="section-head video-section">
+        <h2>Watch</h2>
+        <span class="count">Video</span>
+      </div>
+      <div class="vgrid">
+        <div class="vcard">
+          <div class="vframe">
+            <iframe src="https://www.youtube.com/embed/1dfmaDynCG8" title="Video by Dr. Mary K Boudreaux" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="vmeta">
+            <p class="kicker">Culinary lesson</p>
+            <p class="vcap">How to Make a Roux</p>
+            <p class="vsub">A step-by-step lesson in the foundational Louisiana technique.</p>
+          </div>
+        </div>
+        <div class="vcard">
+          <div class="vframe">
+            <iframe src="https://www.youtube.com/embed/W8r3TQpRPrg" title="Video by Dr. Mary K Boudreaux" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="vmeta">
+            <p class="kicker">Research workshop</p>
+            <p class="vcap">Developing Phenomenological Research</p>
+            <p class="vsub">A workshop on designing critical phenomenological qualitative studies.</p>
+          </div>
+        </div>
+        <div class="vcard">
+          <div class="vframe">
+            <iframe src="https://www.youtube.com/embed/QgXPufvEwpc" title="Video by Dr. Mary K Boudreaux" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="vmeta">
+            <p class="kicker">Animation &middot; Louisiana Creole</p>
+            <p class="vcap">Grandma Pearl&#8217;s Kitchen: The Roux</p>
+            <p class="vsub">My first animated short from Grandma Pearl&#8217;s Kitchen &mdash; a children&#8217;s brand rooted in Louisiana Creole heritage and intergenerational storytelling, by Legacy M&eacute;lange&trade;.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap foot-row">
+      <div class="links">
+        <a href="https://github.com/drmarykat" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:mary.boudreaux20@gmail.com">Email</a>
+        <!-- Replace the LinkedIn URL below with your real profile, then delete this comment -->
+        <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p class="copy">© 2026 Dr. Mary K Boudreaux, EdD</p>
+    </div>
+  </footer>
+
+</body>
+</html>
